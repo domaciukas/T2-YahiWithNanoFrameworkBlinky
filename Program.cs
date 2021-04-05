@@ -7,8 +7,8 @@ namespace T2_YahiWithNanoFrameworkBlinky
     public class Program
     {
         private const string BrokerIp = "192.168.1.42";
-        private const string WifiSsid = "Telia-2.4G-Greitas-5FD576";
-        private const string WifiPassword = "Y49T9VCR9UH";
+        private const string WifiSsid = "";
+        private const string WifiPassword = "";
         public static void Main()
         {
             var networkProvider = new NetworkProvider();
