@@ -24,7 +24,8 @@ namespace T2_YahiWithNanoFrameworkBlinky
         private HostColorProperty _color;
         private HostIntegerProperty _intensity;
 
-        public RgbLedConsumer() {
+        public RgbLedConsumer(string brokerIp) {
+            MqttBrokerIp = brokerIp;
             _mqttClient = new MqttClient(MqttBrokerIp);
             _mqttClient.MqttMsgPublishReceived += HandlePublishReceived;
         }

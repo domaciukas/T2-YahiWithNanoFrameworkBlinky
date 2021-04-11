@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Threading;
 
@@ -34,13 +35,13 @@ namespace T2_YahiWithNanoFrameworkBlinky
                 Debug.WriteLine("Waiting for IP...");
                 var retryCount = 0;
 
-                while (!string.IsNullOrEmpty(networkInterface.IPv4Address) || retryCount < 50) {
+                while ((string.IsNullOrEmpty(networkInterface.IPv4Address) || networkInterface.IPv4Address == "0.0.0.0") && retryCount < 60) {
                     retryCount++;
                     Debug.WriteLine("Retrying. Count: " + retryCount);
-                    Thread.Sleep(500);
+                    Thread.Sleep(1000);
                 }
 
-                if (retryCount == 50 || networkInterface.IPv4Address.Equals("0")) {
+                if (retryCount == 60 || networkInterface.IPv4Address.Equals("0")) {
                     Debug.WriteLine("No IP address has been acquired. Check your SSID and password or router.");
                 } 
                 else {
